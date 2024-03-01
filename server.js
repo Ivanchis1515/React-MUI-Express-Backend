@@ -2,6 +2,8 @@
 
 //importa el modulo expres
 import express from "express";
+//importa cors para permitir peticiones ajenas
+import cors from "cors";
 //importacion del modulo morgan
 import morgan from "morgan";
 //importando el lector de cookie
@@ -14,6 +16,9 @@ import productsRoutes from "./routes/products.route.js";
 
 //inicializa la funcion con la constante
 const app = express();
+//configuracion basica de cors
+//permitir peticiones desde diferentes origenes con cors
+app.use(cors());
 //app utiliza el componente morgan para recibir mensajes de url
 app.use(morgan("dev"));
 //usa el componente express para convertir en objeto js

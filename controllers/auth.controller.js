@@ -36,7 +36,7 @@ export const Register = async (request, response) => {
         });
     }
     catch(error){
-        response.status("500").json({"message":error.message});
+        response.status(500).json({"message":error.message});
     }
 };
 
@@ -48,14 +48,14 @@ export const Login = async (request, response) => {
         const usuarioFound = await Usuario.findOne({correo})
         //si no encunetra resultados
         if(!usuarioFound){
-            return response.status("400").json({message:"Usuario no encontrado"});
+            return response.status(400).json({message:"Usuario no encontrado"});
         }
         
         //compara la contraseña con la contraseña hash
         const contraMatch = await bcrypt.compare(contra, usuarioFound.contra);
         //si no coincidieron las contraseñas
         if(!contraMatch){
-            return response.status("400").json({message:"Contraseña incorrecta"});
+            return response.status(400).json({message:"Contraseña incorrecta"});
         }
 
         //crea el token
@@ -72,7 +72,7 @@ export const Login = async (request, response) => {
         });
     }
     catch(error){
-        response.status("500").json({"message":error.message});
+        response.status(500).json({"message":error.message});
     }
 };
 
