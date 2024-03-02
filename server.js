@@ -16,11 +16,18 @@ import productsRoutes from "./routes/products.route.js";
 
 //inicializa la funcion con la constante
 const app = express();
-//configuracion basica de cors
+
+//configuracion específica de CORS
+const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true, //habilita el intercambio de cookies
+  };
 //permitir peticiones desde diferentes origenes con cors
-app.use(cors());
+app.use(cors(corsOptions));
+
 //app utiliza el componente morgan para recibir mensajes de url
 app.use(morgan("dev"));
+
 //usa el componente express para convertir en objeto js
 app.use(express.json());
 //convierte las cookies a json
