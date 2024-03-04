@@ -24,6 +24,6 @@ const usuarioSchema =  new mongoose.Schema({
     }
 },{
     timestamps: true //guarda la fecha en la que se creo el usuario
-})
+});
 //con el modelo establecido comienza a interactuar con la base
 export default mongoose.model("usuarios", usuarioSchema);

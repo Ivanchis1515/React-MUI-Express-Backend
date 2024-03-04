@@ -19,3 +19,5 @@ AÑADIRLO AL SERVER.JS YA QUE ESTE POR DEFECTO TRABAJA LAS SOLICITUDES
     npm i cookie-parser
 7. CORS Libreria para permitir solicitudes desde cualquier origen
     npm install cors
+8. Validacion en el servidor
+    npm install zod
