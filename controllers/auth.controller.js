@@ -8,7 +8,7 @@ import CreateAccessToken from "../libs/jsonwebtoken.js";
 //funcion register asyncrona
 export const Register = async (request, response) => {
     //obtenemos los datos del objeto del json
-    const {correo, contra, nombre} = request.body;
+    const {correo, contra, nombre, rol} = request.body;
     try{
         //encripta la contraseña antes de enviarla al objeto
         const pswdhash = await bcrypt.hash(contra, 10);
@@ -16,7 +16,8 @@ export const Register = async (request, response) => {
         const nuevoUsuario = new Usuario({
             correo,
             contra: pswdhash,
-            nombre
+            nombre,
+            rol
         });
         console.log(nuevoUsuario);
         //crea una respuesta asyncrona guardando el usuario
@@ -31,6 +32,7 @@ export const Register = async (request, response) => {
             id: usuarioGuardado._id,
             nombre: usuarioGuardado.nombre,
             correo: usuarioGuardado.correo,
+            rol: usuarioGuardado.rol,
             createdAt: usuarioGuardado.createdAt,
             updateAt: usuarioGuardado.updatedAt
         });
@@ -67,6 +69,7 @@ export const Login = async (request, response) => {
             id: usuarioFound._id,
             nombre: usuarioFound.nombre,
             correo: usuarioFound.correo,
+            rol: usuarioFound.rol,
             createdAt: usuarioFound.createdAt,
             updateAt: usuarioFound.updatedAt
         });

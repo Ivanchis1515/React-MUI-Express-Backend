@@ -17,6 +17,10 @@ const usuarioSchema =  new mongoose.Schema({
         type: String, //tipo de dato cadena
         required: true, //que sea requerido 
         trim: true //limpia la cadena si es que contiene espacios
+    },
+    rol:{
+        type: String, //tipo de dato cadena
+        required: true, //que sea requerido 
     }
 },{
     timestamps: true //guarda la fecha en la que se creo el usuario
