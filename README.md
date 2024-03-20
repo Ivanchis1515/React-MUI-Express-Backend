@@ -23,3 +23,6 @@ AÑADIRLO AL SERVER.JS YA QUE ESTE POR DEFECTO TRABAJA LAS SOLICITUDES
     npm install zod
 9. Instalación cyptojs para generar tokens de usuario
     npm install --save crypyo
+10. Instalación servicio de mail
+    npm install nodemailer
+    
