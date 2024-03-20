@@ -21,3 +21,5 @@ AÑADIRLO AL SERVER.JS YA QUE ESTE POR DEFECTO TRABAJA LAS SOLICITUDES
     npm install cors
 8. Validacion en el servidor
     npm install zod
+9. Instalación cyptojs para generar tokens de usuario
+    npm install --save crypyo

@@ -21,6 +21,14 @@ const usuarioSchema =  new mongoose.Schema({
     rol:{
         type: String, //tipo de dato cadena
         required: true, //que sea requerido 
+    },
+    resetToken: {
+        type: String, // Tipo de dato cadena para almacenar el token
+        default: null // Valor por defecto es nulo, ya que al principio no hay token
+    },
+    resetTokenExpires: {
+        type: Date, // Tipo de dato fecha para almacenar la fecha de expiración del token
+        default: null // Valor por defecto es nulo, ya que al principio no hay token
     }
 },{
     timestamps: true //guarda la fecha en la que se creo el usuario

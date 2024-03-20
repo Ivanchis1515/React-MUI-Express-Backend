@@ -4,6 +4,7 @@ import Usuario from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 //importacion del token
 import CreateAccessToken from "../libs/jsonwebtoken.js";
+import crypto from "crypto";
 
 //funcion register asyncrona
 export const Register = async (request, response) => {
@@ -84,6 +85,31 @@ export const Logout = (request, response) => {
         expires: new Date(0)
     });
     return response.sendStatus(200);
+};
+
+export const ForgotPassword = async(request, response) => {
+    //obtenemos los datos del objeto del json
+    const { correo } = request.body;
+    console.log(correo);
+    const usuarioFound = await Usuario.findOne({correo}) //busca al usuario por el correo y trae los registros
+    //si no encunetra resultados
+    if(!usuarioFound){
+        return response.status(400).json({message:"Usuario no encontrado"});
+    }
+
+    //si el usuario existe 
+    //genera un token aleatorio
+    const token = crypto.randomBytes(20).toString('hex');
+
+    //asigna el token y la fecha de expiración al usuario
+    usuarioFound.resetToken = token;
+    usuarioFound.resetTokenExpires = new Date(Date.now() + 2 * 60 * 60 * 1000); // 2 horas en milisegundos
+
+    //guardar el usuario en la base de datos
+    await usuarioFound.save();
+    console.log("Token generado:", token);
+    return response.sendStatus(200);
+
 };
 
 export const Profile = async(request, response) => {
